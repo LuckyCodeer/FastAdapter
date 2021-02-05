@@ -1,0 +1,2 @@
+# RecyclerBaseAdapter
+一个通用的RecyclerView的基类Adapter，可快速实现RecyclerView适配器编写。
