@@ -1,2 +1,2 @@
-# RecyclerBaseAdapter
-一个通用的RecyclerView的基类Adapter，可快速实现RecyclerView适配器编写。
+# FastAdapter
+一个快速进行适配器编写的库，适用于RecyclerView,ListView,GridView,ViewPager等

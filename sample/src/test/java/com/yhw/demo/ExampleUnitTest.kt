@@ -1,4 +1,4 @@
-package com.yhw.recyclerbaseadapter
+package com.yhw.demo
 
 import org.junit.Test
 

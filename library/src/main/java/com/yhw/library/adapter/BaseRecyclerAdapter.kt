@@ -1,4 +1,4 @@
-package com.yhw.library
+package com.yhw.library.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

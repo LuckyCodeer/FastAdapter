@@ -1,4 +1,4 @@
-package com.yhw.recyclerbaseadapter
+package com.yhw.demo
 
 import android.content.DialogInterface
 import android.os.Bundle
@@ -10,8 +10,8 @@ import androidx.appcompat.widget.AppCompatButton
 import androidx.appcompat.widget.AppCompatCheckBox
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.yhw.library.BaseRecyclerAdapter
-import com.yhw.library.RecyclerViewHolder
+import com.yhw.library.adapter.BaseRecyclerAdapter
+import com.yhw.library.adapter.RecyclerViewHolder
 
 /**
  * demo
