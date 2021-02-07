@@ -1,6 +1,16 @@
 plugins {
     id 'com.android.library'
     id 'kotlin-android'
+    id 'com.github.panpf.bintray-publish'
+}
+publish {
+    userOrg = 'yanghongwei'
+    groupId = 'com.yhw.library'
+    artifactId = 'fastadapter'
+    publishVersion = '0.0.1'
+    repoName="FastAdapter"
+    desc = 'A fast adapter code library, suitable for RecyclerView, ListView, GridView, ViewPager, etc'
+    website = 'https://github.com/LuckyCodeer/FastAdapter'
 }
 
 android {
