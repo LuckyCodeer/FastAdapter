@@ -10,7 +10,7 @@ import androidx.appcompat.widget.AppCompatButton
 import androidx.appcompat.widget.AppCompatCheckBox
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.yhw.library.RecyclerBaseAdapter
+import com.yhw.library.BaseRecyclerAdapter
 import com.yhw.library.RecyclerViewHolder
 
 /**
@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity() {
         val deleteBtn = findViewById<AppCompatButton>(R.id.btn_delete)
         val recyclerView = findViewById<RecyclerView>(R.id.recycler_view)
         recyclerView.layoutManager = LinearLayoutManager(this)
-        val adapter = MyAdapter(dataList)
+        val adapter = MyRecyclerAdapter(dataList)
         recyclerView.adapter = adapter
 
         /**
@@ -75,7 +75,7 @@ class MainActivity : AppCompatActivity() {
                             recyclerView.smoothScrollToPosition(adapter.itemCount - 1)
                         }
                         5 -> {
-                            adapter.deleteItem(4)
+                            adapter.deleteItem(3)
                         }
                         6 -> {
                             adapter.isShowCheckBox = true
@@ -118,9 +118,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     /**
-     * 直接继承 RecyclerBaseAdapter
+     * 直接继承 BaseRecyclerAdapter
      */
-    inner class MyAdapter(mDataList: MutableList<String>) : RecyclerBaseAdapter<String>(
+    inner class MyRecyclerAdapter(mDataList: MutableList<String>) : BaseRecyclerAdapter<String>(
         mDataList
     ) {
         var isShowCheckBox = false

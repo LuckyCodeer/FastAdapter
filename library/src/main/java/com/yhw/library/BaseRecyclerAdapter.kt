@@ -5,9 +5,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 
 /**
- * 基类adapter
+ * Recycler基类Adapter
  */
-abstract class RecyclerBaseAdapter<T>(private var mDataList: MutableList<T>) :
+abstract class BaseRecyclerAdapter<T>(private var mDataList: MutableList<T>) :
     RecyclerView.Adapter<RecyclerViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerViewHolder {
         val view =
@@ -46,12 +46,14 @@ abstract class RecyclerBaseAdapter<T>(private var mDataList: MutableList<T>) :
      * 插入数据
      */
     fun insertItem(data: T, position: Int) {
-        if (position >= itemCount) {
+        if (position > itemCount) {
             return
         }
         this.mDataList.add(position, data)
         this.notifyItemRangeInserted(position, 1)
-        this.notifyItemRangeChanged(position + 1, itemCount - 1)
+        if (position + 1 < itemCount) {
+            this.notifyItemRangeChanged(position + 1, itemCount - position - 1)
+        }
     }
 
     /**
@@ -60,7 +62,7 @@ abstract class RecyclerBaseAdapter<T>(private var mDataList: MutableList<T>) :
     fun insertItemToFirst(data: T) {
         this.mDataList.add(0, data)
         this.notifyItemInserted(0)
-        if (itemCount > 0) {
+        if (itemCount > 1) {
             this.notifyItemRangeChanged(1, itemCount - 1)
         }
     }
@@ -72,12 +74,12 @@ abstract class RecyclerBaseAdapter<T>(private var mDataList: MutableList<T>) :
         this.mDataList.addAll(0, dataList)
         this.notifyItemRangeInserted(0, dataList.size)
         if (itemCount > dataList.size) {
-            this.notifyItemRangeChanged(dataList.size, itemCount - 1)
+            this.notifyItemRangeChanged(dataList.size, itemCount - dataList.size)
         }
     }
 
     /**
-     * 追加数据
+     * 尾部追加数据
      */
     fun appendItem(data: T) {
         this.mDataList.add(data)
@@ -85,7 +87,7 @@ abstract class RecyclerBaseAdapter<T>(private var mDataList: MutableList<T>) :
     }
 
     /**
-     * 追加数据
+     * 尾部追加多条数据
      */
     fun appendItem(dataList: MutableList<T>) {
         this.mDataList.addAll(dataList)
@@ -101,8 +103,8 @@ abstract class RecyclerBaseAdapter<T>(private var mDataList: MutableList<T>) :
         }
         this.mDataList.removeAt(position)
         this.notifyItemRemoved(position)
-        if (itemCount > 0 && position != itemCount - 1) {
-            this.notifyItemRangeChanged(position, itemCount - 1)
+        if (itemCount > 0 && position < itemCount) {
+            this.notifyItemRangeChanged(position, itemCount - position)
         }
     }
 
