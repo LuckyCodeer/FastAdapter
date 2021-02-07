@@ -75,7 +75,7 @@ class MainActivity : AppCompatActivity() {
                             recyclerView.smoothScrollToPosition(adapter.itemCount - 1)
                         }
                         5 -> {
-                            adapter.deleteItem(3)
+                            adapter.deleteItem(4)
                         }
                         6 -> {
                             adapter.isShowCheckBox = true
