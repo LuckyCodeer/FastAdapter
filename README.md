@@ -6,3 +6,6 @@
 ```java
 implementation 'com.yhw.library:fastadapter:0.0.1'
 ```
+
+使用方法：
+请查看Demo中的代码示例
