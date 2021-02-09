@@ -5,10 +5,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 
 /**
- * Recycler基类Adapter
+ * RecyclerView基类Adapter
  */
 abstract class BaseRecyclerAdapter<T>(private var mDataList: MutableList<T>) :
-    RecyclerView.Adapter<RecyclerViewHolder>() {
+    RecyclerView.Adapter<RecyclerViewHolder>(), IAdapter<T> {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerViewHolder {
         val view =
             LayoutInflater.from(parent.context).inflate(getItemLayoutId(viewType), parent, false)
@@ -23,18 +23,12 @@ abstract class BaseRecyclerAdapter<T>(private var mDataList: MutableList<T>) :
         return mDataList.size
     }
 
-    /**
-     * 刷新整个列表数据
-     */
-    fun refreshList(dataList: MutableList<T>) {
+    override fun refreshAll(dataList: MutableList<T>) {
         this.mDataList = dataList
         this.notifyDataSetChanged()
     }
 
-    /**
-     * 刷新单个条目的数据
-     */
-    fun refreshItem(position: Int, data: T) {
+    override fun refreshItem(data: T, position: Int) {
         if (position >= itemCount) {
             return
         }
@@ -45,7 +39,7 @@ abstract class BaseRecyclerAdapter<T>(private var mDataList: MutableList<T>) :
     /**
      * 插入数据
      */
-    fun insertItem(data: T, position: Int) {
+    override fun insertItem(data: T, position: Int) {
         if (position > itemCount) {
             return
         }
@@ -59,7 +53,7 @@ abstract class BaseRecyclerAdapter<T>(private var mDataList: MutableList<T>) :
     /**
      * 首部插入数据
      */
-    fun insertItemToFirst(data: T) {
+    override fun insertItemToFirst(data: T) {
         this.mDataList.add(0, data)
         this.notifyItemInserted(0)
         if (itemCount > 1) {
@@ -70,7 +64,7 @@ abstract class BaseRecyclerAdapter<T>(private var mDataList: MutableList<T>) :
     /**
      * 首部插入多条数据
      */
-    fun insertItemToFirst(dataList: MutableList<T>) {
+    override fun insertItemToFirst(dataList: MutableList<T>) {
         this.mDataList.addAll(0, dataList)
         this.notifyItemRangeInserted(0, dataList.size)
         if (itemCount > dataList.size) {
@@ -81,7 +75,7 @@ abstract class BaseRecyclerAdapter<T>(private var mDataList: MutableList<T>) :
     /**
      * 尾部追加数据
      */
-    fun appendItem(data: T) {
+    override fun appendItem(data: T) {
         this.mDataList.add(data)
         this.notifyItemInserted(itemCount)
     }
@@ -89,15 +83,12 @@ abstract class BaseRecyclerAdapter<T>(private var mDataList: MutableList<T>) :
     /**
      * 尾部追加多条数据
      */
-    fun appendItem(dataList: MutableList<T>) {
+    override fun appendItem(dataList: MutableList<T>) {
         this.mDataList.addAll(dataList)
         this.notifyItemRangeInserted(itemCount, dataList.size)
     }
 
-    /**
-     * 删除某个条目
-     */
-    fun deleteItem(position: Int) {
+    override fun removeAt(position: Int) {
         if (position >= itemCount) {
             return
         }
@@ -108,29 +99,24 @@ abstract class BaseRecyclerAdapter<T>(private var mDataList: MutableList<T>) :
         }
     }
 
-    /**
-     * 批量删除条目
-     */
-    fun deleteItem(positionList: MutableList<Int>) {
+    override fun removeAt(positionList: MutableList<Int>) {
         if (positionList.size >= itemCount) {
             return
         }
         for (i in positionList) {
             this.mDataList.removeAt(i)
-            this.notifyItemRemoved(i)
         }
-        if (itemCount > 0) {
-            this.notifyDataSetChanged()
-        }
+        this.notifyDataSetChanged()
     }
 
     /**
      * 清除所有数据
      */
-    fun removeAll() {
+    override fun removeAll() {
         this.mDataList.clear()
         this.notifyDataSetChanged()
     }
+
 
     /**
      * 布局文件
