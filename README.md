@@ -1,5 +1,5 @@
 # FastAdapter
-一个快速进行适配器编写的库，适用于RecyclerView,ListView,GridView,ViewPager等,
+一个快速进行适配器编写的库，适用于RecyclerView,ListView,GridView,ViewPager等，
 可大大减少样板代码，简化Adapter的编写。
 
 ### 引入依赖
@@ -10,7 +10,7 @@ implementation 'com.yhw.library:fastadapter:1.0.0'
 
 ### 使用方法
 
-#### RecyclerView Adapter用法
+#### RecyclerView Adapter用法：
 ```kotlin
 class MyRecyclerAdapter(dataList: MutableList<String>) : BaseRecyclerAdapter<String>(dataList) {
 
@@ -29,6 +29,8 @@ class MyRecyclerAdapter(dataList: MutableList<String>) : BaseRecyclerAdapter<Str
         }
 }
 ```
+**\*其它Adapter具体用法请参考Demo中的代码示例**
+
 #### 首部插入一条数据
 ```kotlin
 adapter.insertItemToFirst("新插入的首部数据")
@@ -73,4 +75,4 @@ adapter.refreshAll(mutableListOf("新数据A", "新数据B", "新数据C", "新�
 ```
 
 
-**其它Adapter具体用法请参考Demo中的代码示例，示例代码采用Kotlin语言编写，如果你的项目是Java，用法与Kotlin基本类似**
+**\*示例代码采用Kotlin语言编写，如果你的项目是Java，用法与Kotlin基本类似**
