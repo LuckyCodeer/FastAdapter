@@ -72,5 +72,5 @@ adapter.refreshItem("这是更新过的数据", 4)
 adapter.refreshAll(mutableListOf("新数据A", "新数据B", "新数据C", "新数据D", "新数据E", "新数据F", "新数据G", "新数据H"))
 ```
 
-**其它Adapter具体用法请参考Demo中的代码示例**
-**示例代码和说明采用Kotlin语言编写，如果你的项目是Java，用法与Kotlin基本类似**
+
+**其它Adapter具体用法请参考Demo中的代码示例，示例代码采用Kotlin语言编写，如果你的项目是Java，用法与Kotlin基本类似**
