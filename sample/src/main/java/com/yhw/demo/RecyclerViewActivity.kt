@@ -11,7 +11,6 @@ import androidx.appcompat.widget.AppCompatCheckBox
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.yhw.library.adapter.BaseRecyclerAdapter
-import com.yhw.library.adapter.RecyclerViewHolder
 
 /**
  * recyclerview demo
@@ -120,8 +119,8 @@ class RecyclerViewActivity : AppCompatActivity() {
     /**
      * 直接继承 BaseRecyclerAdapter
      */
-    inner class MyRecyclerAdapter(mDataList: MutableList<String>) : BaseRecyclerAdapter<String>(
-        mDataList
+    inner class MyRecyclerAdapter(dataList: MutableList<String>) : BaseRecyclerAdapter<String>(
+        dataList
     ) {
         var isShowCheckBox = false
         var checkedList = mutableListOf<Int>()
@@ -130,9 +129,10 @@ class RecyclerViewActivity : AppCompatActivity() {
             return R.layout.sample_item_layout
         }
 
-        override fun onBindViewItem(holder: RecyclerViewHolder, position: Int, item: String) {
+        override fun onBindViewItem(holder: RecyclerViewHolder, position: Int, data: String) {
             //使用 holder.getView(R.id.tv_text) 或者 setText()
-            holder.setText(R.id.tv_text, "$item  $position")
+//            val textView = holder.getView<TextView>(R.id.tv_text)
+            holder.setText(R.id.tv_text, "$data  $position")
             holder.setImageResource(R.id.iv_image, R.mipmap.ic_launcher)
             val checkBox = holder.getView<AppCompatCheckBox>(R.id.checkbox)
             checkBox.visibility = if (isShowCheckBox) View.VISIBLE else View.GONE

@@ -17,6 +17,10 @@ class MainActivity : AppCompatActivity() {
             startActivity(Intent(this,RecyclerViewActivity::class.java))
         }
 
+        findViewById<Button>(R.id.btn_listview).setOnClickListener{
+            startActivity(Intent(this,ListViewActivity::class.java))
+        }
+
         findViewById<Button>(R.id.btn_viewpager_fragment).setOnClickListener{
             startActivity(Intent(this,ViewPagerFragmentActivity::class.java))
         }

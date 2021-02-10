@@ -16,12 +16,20 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
+        android:id="@+id/btn_listview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="ListView &amp; GridView"
+        android:textAllCaps="false"
+        app:layout_constraintTop_toBottomOf="@id/btn_recyclerview" />
+
+    <Button
         android:id="@+id/btn_viewpager_fragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="ViewPager Fragment"
         android:textAllCaps="false"
-        app:layout_constraintTop_toBottomOf="@id/btn_recyclerview" />
+        app:layout_constraintTop_toBottomOf="@id/btn_listview" />
 
     <Button
         android:id="@+id/btn_viewpager_view"
