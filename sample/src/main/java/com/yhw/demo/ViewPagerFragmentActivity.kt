@@ -17,7 +17,7 @@ class ViewPagerFragmentActivity : AppCompatActivity() {
         for (i in 0..4) {
             fragmentList.add(DemoFragment.newInstance("Fragment $i"))
         }
-        val adapter = BaseViewPagerFragmentAdapter(supportFragmentManager, fragmentList)
+        val adapter = BaseViewPagerFragmentAdapter(supportFragmentManager,fragmentList)
         viewPager.adapter = adapter
     }
 }

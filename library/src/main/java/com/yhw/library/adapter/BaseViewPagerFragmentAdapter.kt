@@ -2,16 +2,35 @@ package com.yhw.library.adapter
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentPagerAdapter
+import androidx.fragment.app.FragmentStatePagerAdapter
 
 /**
  * ViewPage的基类adapter
  * Fragment
  */
-class BaseViewPagerFragmentAdapter(
-    fm: FragmentManager,
+class BaseViewPagerFragmentAdapter : FragmentStatePagerAdapter, IAdapter<Fragment> {
     private var fragmentList: MutableList<Fragment>
-) : FragmentPagerAdapter(fm), IAdapter<Fragment> {
+
+    constructor(
+        fm: FragmentManager,
+        fragmentList: MutableList<Fragment>
+    ) : super(fm) {
+        this.fragmentList = fragmentList
+    }
+
+    /**
+     * @param behavior FragmentStatePagerAdapter.BEHAVIOR_SET_USER_VISIBLE_HINT,
+     * FragmentStatePagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT
+     */
+    constructor(
+        fm: FragmentManager,
+        behavior: Int,
+        fragmentList: MutableList<Fragment>
+    ) : super(fm, behavior) {
+        this.fragmentList = fragmentList
+    }
+
+
     override fun getCount(): Int {
         return fragmentList.size
     }

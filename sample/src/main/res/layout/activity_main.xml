@@ -39,4 +39,28 @@
         android:textAllCaps="false"
         app:layout_constraintTop_toBottomOf="@id/btn_viewpager_fragment" />
 
+    <Button
+        android:id="@+id/btn_expandable_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="ExpandableListView"
+        android:textAllCaps="false"
+        app:layout_constraintTop_toBottomOf="@id/btn_viewpager_view" />
+
+    <Button
+        android:id="@+id/btn_viewpager2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="ViewPager2"
+        android:textAllCaps="false"
+        app:layout_constraintTop_toBottomOf="@id/btn_expandable_view" />
+
+    <Button
+        android:id="@+id/btn_viewpager2_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="ViewPager2 Fragment"
+        android:textAllCaps="false"
+        app:layout_constraintTop_toBottomOf="@id/btn_viewpager2" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
