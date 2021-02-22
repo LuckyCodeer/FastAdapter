@@ -10,7 +10,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FastAdapter">
-        <activity android:name=".ViewPager2FragmentActivity"></activity>
+        <activity android:name=".SpinnerActivity"></activity>
+        <activity android:name=".ViewPager2FragmentActivity" />
         <activity android:name=".ViewPager2Activity" />
         <activity android:name=".ExpandableListActivity" />
         <activity android:name=".ListViewActivity" />

@@ -1,11 +1,11 @@
 # FastAdapter
-一个快速进行适配器编写的库，适用于RecyclerView,ListView,GridView,ViewPager等，
+一个快速进行适配器编写的库，适用于RecyclerView、ListView、GridView、ViewPager、ViewPager2、ExpandableListView、Spinner等，
 可大大减少样板代码，简化Adapter的编写。
 
 ### 引入依赖
 
 ```kotlin
-implementation 'com.yhw.library:fastadapter:1.0.0'
+implementation 'com.yhw.library:fastadapter:1.0.1'
 ```
 
 ### 使用方法

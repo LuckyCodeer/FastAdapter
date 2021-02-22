@@ -40,5 +40,9 @@ class MainActivity : AppCompatActivity() {
         findViewById<Button>(R.id.btn_viewpager2_fragment).setOnClickListener {
             startActivity(Intent(this, ViewPager2FragmentActivity::class.java))
         }
+
+        findViewById<Button>(R.id.btn_spanner).setOnClickListener {
+            startActivity(Intent(this, SpinnerActivity::class.java))
+        }
     }
 }
