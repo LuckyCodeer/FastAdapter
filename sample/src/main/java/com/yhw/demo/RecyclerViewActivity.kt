@@ -30,6 +30,22 @@ class RecyclerViewActivity : AppCompatActivity() {
         recyclerView.layoutManager = LinearLayoutManager(this)
         val adapter = MyRecyclerAdapter(dataList)
         recyclerView.adapter = adapter
+        //单击
+        adapter.onItemClickListener =object: BaseRecyclerAdapter.OnItemClickListener {
+            override fun onItemClick(position: Int, view: View) {
+                if(!adapter.isShowCheckBox){
+                    Toast.makeText(this@RecyclerViewActivity, "item => $position", Toast.LENGTH_SHORT)
+                        .show()
+                }
+            }
+        }
+        //长按
+        adapter.onItemLongClickListener = object : BaseRecyclerAdapter.OnItemLongClickListener {
+            override fun onItemLongClick(position: Int, view: View) {
+                Toast.makeText(this@RecyclerViewActivity, "长按 => $position", Toast.LENGTH_SHORT)
+                    .show()
+            }
+        }
 
         /**
          * 操作数据，增删改
@@ -147,8 +163,6 @@ class RecyclerViewActivity : AppCompatActivity() {
                     }
                     return@setOnClickListener
                 }
-                Toast.makeText(this@RecyclerViewActivity, "item => $position", Toast.LENGTH_SHORT)
-                    .show()
             }
         }
 

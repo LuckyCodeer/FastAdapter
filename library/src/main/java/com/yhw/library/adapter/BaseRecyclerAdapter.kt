@@ -18,6 +18,9 @@ import androidx.recyclerview.widget.RecyclerView
  */
 abstract class BaseRecyclerAdapter<T>(private var dataList: MutableList<T>) :
     RecyclerView.Adapter<BaseRecyclerAdapter.RecyclerViewHolder>(), IAdapter<T> {
+    open var onItemClickListener: OnItemClickListener? = null
+    open var onItemLongClickListener: OnItemLongClickListener? = null
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerViewHolder {
         val view =
             LayoutInflater.from(parent.context).inflate(getItemLayoutId(viewType), parent, false)
@@ -26,6 +29,17 @@ abstract class BaseRecyclerAdapter<T>(private var dataList: MutableList<T>) :
 
     override fun onBindViewHolder(holder: RecyclerViewHolder, position: Int) {
         onBindViewItem(holder, position, dataList[position])
+        if (onItemClickListener != null) {
+            holder.itemView.setOnClickListener {
+                onItemClickListener?.onItemClick(position, holder.itemView)
+            }
+        }
+        if (onItemLongClickListener != null) {
+            holder.itemView.setOnLongClickListener {
+                onItemLongClickListener?.onItemLongClick(position, holder.itemView)
+                true
+            }
+        }
     }
 
     override fun getItemCount(): Int {
@@ -183,6 +197,14 @@ abstract class BaseRecyclerAdapter<T>(private var dataList: MutableList<T>) :
             val checkBox: CheckBox = getView(viewId)
             checkBox.isChecked = isChecked
         }
-
     }
+
+    interface OnItemClickListener {
+        fun onItemClick(position: Int, view: View)
+    }
+
+    interface OnItemLongClickListener {
+        fun onItemLongClick(position: Int, view: View)
+    }
+
 }
