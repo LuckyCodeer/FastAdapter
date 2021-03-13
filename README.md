@@ -5,7 +5,7 @@
 ### 引入依赖
 
 ```kotlin
-implementation 'com.yhw.library:fastadapter:1.0.1'
+implementation 'com.yhw.library:fastadapter:1.0.2'
 ```
 
 ### 使用方法
