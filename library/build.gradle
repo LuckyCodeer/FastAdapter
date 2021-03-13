@@ -7,7 +7,7 @@ publish {
     userOrg = 'yanghongwei'
     groupId = 'com.yhw.library'
     artifactId = 'fastadapter'
-    publishVersion = '1.0.1'
+    publishVersion = '1.0.2'
     repoName="FastAdapter"
     desc = 'A fast adapter code library, suitable for RecyclerView、ListView、GridView、ViewPager、ViewPager2、ExpandableListView、Spinner, etc'
     website = 'https://github.com/LuckyCodeer/FastAdapter'
