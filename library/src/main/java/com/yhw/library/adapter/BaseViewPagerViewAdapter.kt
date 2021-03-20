@@ -59,10 +59,8 @@ class BaseViewPagerViewAdapter(private var viewList: MutableList<View>) : PagerA
         this.notifyDataSetChanged()
     }
 
-    override fun removeAt(positionList: MutableList<Int>) {
-        for (position in positionList) {
-            this.viewList.removeAt(position)
-        }
+    override fun removeAll(dataList: MutableList<View>) {
+        this.viewList.removeAll(dataList)
         this.notifyDataSetChanged()
     }
 

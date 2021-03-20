@@ -69,10 +69,8 @@ class BaseViewPagerFragmentAdapter : FragmentStatePagerAdapter, IAdapter<Fragmen
         this.notifyDataSetChanged()
     }
 
-    override fun removeAt(positionList: MutableList<Int>) {
-        for (position in positionList) {
-            this.fragmentList.removeAt(position)
-        }
+    override fun removeAll(dataList: MutableList<Fragment>) {
+        this.fragmentList.removeAll(dataList)
         this.notifyDataSetChanged()
     }
 

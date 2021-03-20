@@ -122,13 +122,8 @@ abstract class BaseRecyclerAdapter<T>(private var dataList: MutableList<T>) :
         }
     }
 
-    override fun removeAt(positionList: MutableList<Int>) {
-        if (positionList.size >= itemCount) {
-            return
-        }
-        for (i in positionList) {
-            this.dataList.removeAt(i)
-        }
+    override fun removeAll(dataList: MutableList<T>) {
+        this.dataList.removeAll(dataList)
         this.notifyDataSetChanged()
     }
 

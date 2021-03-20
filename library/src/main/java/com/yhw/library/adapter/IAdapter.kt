@@ -35,7 +35,7 @@ interface IAdapter<T> {
     /**
      * 移除多个数据
      */
-    fun removeAt(positionList: MutableList<Int>)
+    fun removeAll(dataList: MutableList<T>)
 
     /**
      * 移除全部数据

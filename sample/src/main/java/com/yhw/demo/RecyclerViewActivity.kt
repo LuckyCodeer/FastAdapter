@@ -2,6 +2,7 @@ package com.yhw.demo
 
 import android.content.DialogInterface
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
@@ -22,7 +23,7 @@ class RecyclerViewActivity : AppCompatActivity() {
 
         val dataList = mutableListOf<String>()
         for (i in 0..100) {
-            dataList.add("this is item")
+            dataList.add("this is item $i")
         }
 
         val deleteBtn = findViewById<AppCompatButton>(R.id.btn_delete)
@@ -31,14 +32,18 @@ class RecyclerViewActivity : AppCompatActivity() {
         val adapter = MyRecyclerAdapter(dataList)
         recyclerView.adapter = adapter
         //单击
-        adapter.onItemClickListener =object: BaseRecyclerAdapter.OnItemClickListener {
+/*        adapter.onItemClickListener = object : BaseRecyclerAdapter.OnItemClickListener {
             override fun onItemClick(position: Int, view: View) {
-                if(!adapter.isShowCheckBox){
-                    Toast.makeText(this@RecyclerViewActivity, "item => $position", Toast.LENGTH_SHORT)
+                if (!adapter.isShowCheckBox) {
+                    Toast.makeText(
+                        this@RecyclerViewActivity,
+                        "item => $position",
+                        Toast.LENGTH_SHORT
+                    )
                         .show()
                 }
             }
-        }
+        }*/
         //长按
         adapter.onItemLongClickListener = object : BaseRecyclerAdapter.OnItemLongClickListener {
             override fun onItemLongClick(position: Int, view: View) {
@@ -125,7 +130,8 @@ class RecyclerViewActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
             adapter.isShowCheckBox = false
-            adapter.removeAt(adapter.checkedList)
+            Log.i("TAG", "checked list ${adapter.checkedList.size}")
+            adapter.removeAll(adapter.checkedList)
             adapter.checkedList.clear()
             deleteBtn.visibility = View.GONE
         }
@@ -135,11 +141,11 @@ class RecyclerViewActivity : AppCompatActivity() {
     /**
      * 直接继承 BaseRecyclerAdapter
      */
-    inner class MyRecyclerAdapter(dataList: MutableList<String>) : BaseRecyclerAdapter<String>(
+    inner class MyRecyclerAdapter(var dataList: MutableList<String>) : BaseRecyclerAdapter<String>(
         dataList
     ) {
         var isShowCheckBox = false
-        var checkedList = mutableListOf<Int>()
+        var checkedList = mutableListOf<String>()
 
         override fun getItemLayoutId(viewType: Int): Int {
             return R.layout.sample_item_layout
@@ -148,7 +154,7 @@ class RecyclerViewActivity : AppCompatActivity() {
         override fun onBindViewItem(holder: RecyclerViewHolder, position: Int, data: String) {
             //使用 holder.getView(R.id.tv_text) 或者 setText()
 //            val textView = holder.getView<TextView>(R.id.tv_text)
-            holder.setText(R.id.tv_text, "$data  $position")
+            holder.setText(R.id.tv_text, data)
             holder.setImageResource(R.id.iv_image, R.mipmap.ic_launcher)
             val checkBox = holder.getView<AppCompatCheckBox>(R.id.checkbox)
             checkBox.visibility = if (isShowCheckBox) View.VISIBLE else View.GONE
@@ -156,12 +162,20 @@ class RecyclerViewActivity : AppCompatActivity() {
             holder.itemView.setOnClickListener {
                 if (isShowCheckBox) {
                     checkBox.isChecked = !checkBox.isChecked
+                    val s = dataList[position]
                     if (checkBox.isChecked) {
-                        checkedList.add(position)
+                        checkedList.add(s)
                     } else {
-                        checkedList.remove(position)
+                        checkedList.remove(s)
                     }
                     return@setOnClickListener
+                } else {
+                    Toast.makeText(
+                        this@RecyclerViewActivity,
+                        "item => $position",
+                        Toast.LENGTH_SHORT
+                    )
+                        .show()
                 }
             }
         }

@@ -62,10 +62,8 @@ abstract class BaseListGridAdapter<T>(private var dataList: MutableList<T>) :
         this.notifyDataSetChanged()
     }
 
-    override fun removeAt(positionList: MutableList<Int>) {
-        for (position in positionList) {
-            this.dataList.removeAt(position)
-        }
+    override fun removeAll(dataList: MutableList<T>) {
+        this.dataList.removeAll(dataList)
         this.notifyDataSetChanged()
     }
 

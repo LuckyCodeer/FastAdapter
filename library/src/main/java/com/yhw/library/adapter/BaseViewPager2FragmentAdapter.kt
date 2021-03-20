@@ -92,13 +92,8 @@ class BaseViewPager2FragmentAdapter(
         }
     }
 
-    override fun removeAt(positionList: MutableList<Int>) {
-        if (positionList.size >= itemCount) {
-            return
-        }
-        for (i in positionList) {
-            this.fragmentList.removeAt(i)
-        }
+    override fun removeAll(dataList: MutableList<Fragment>) {
+        this.fragmentList.removeAll(dataList)
         this.notifyDataSetChanged()
     }
 
