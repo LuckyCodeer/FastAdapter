@@ -5,7 +5,16 @@
 ### 引入依赖
 
 ```kotlin
-implementation 'com.yhw.library:fastadapter:1.0.3'
+allprojects {
+		repositories {
+			...
+			maven { url 'https://jitpack.io' }
+		}
+	}
+        
+dependencies {
+	        implementation 'com.github.LuckyCodeer:FastAdapter:V1.0.3'
+	}
 ```
 
 ### 使用方法
